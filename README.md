@@ -83,6 +83,10 @@ Praxis-Regeln:
 - **Ein Modell pro Use-Case** — und der Modellwechsel gehört nicht in den
   Container-Neustart (siehe Kap. 6b, llama-swap).
 
+**Unser bewährtes Trio** (Speed-Coder / Präzision / Balance — mit Hugging-Face-Links,
+gemessenen Werten und der kompletten llama-swap-Config als Copy-Paste-Basis):
+[docs/models.md](docs/models.md)
+
 ## 5. Die Stellschrauben, die wirklich was bringen (gemessen)
 
 | Maßnahme | Effekt | Flag(s) |
