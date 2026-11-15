@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.1 — November 2026
+
+- `docs/models.md`: bewährtes Modell-Trio dokumentiert — Rollen (Speed-Coder /
+  Präzision / Balance), Hugging-Face-Links zu den exakten GGUF-Repos, gemessene
+  tok/s, Thinking-Profile und die komplette llama-swap-Config als Copy-Paste-Basis
+- Caveats ergänzt: Gemma-26B-QAT ohne draft-MTP fahren, 131k-Kontext braucht
+  `-ub/-b 1024` (Compute-Buffer statt KV war der Engpass), Hash-Check-Pflicht
+
 ## v1.0 — November 2026
 
 - Erste Veröffentlichung: Leitfaden aus zwei unabhängigen Messreihen
