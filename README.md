@@ -208,6 +208,16 @@ Details und Produktions-Fallstricke: [docs/llama-swap.md](docs/llama-swap.md)
 
 ---
 
+## Danksagung
+
+Ein Teil des Aufbaus und der Herangehensweise in diesem Repo basiert auf den Videos von
+**[Kai Explains](https://www.youtube.com/@kaiexplainsYT)** (YouTube) — von dort stammen
+entscheidende Denkanstöße, insbesondere rund um MoE-Caching und den lokalen
+Coding-Agent-Stack. Dieses Repo ist unser Versuch, das dort Erklärte mit eigenen,
+zweisystem-gemessenen Zahlen zu untermauern und auf das zu verdichten, was nach dem
+Nachbauen wirklich übrig bleibt. Schaut bei ihm vorbei — die Videos erklären das *Warum*
+oft zugänglicher als jede Tabellenzelle hier.
+
 ## Mitwirken
 
 Messwerte, Korrekturen, Gegenbefunde — alles willkommen, siehe

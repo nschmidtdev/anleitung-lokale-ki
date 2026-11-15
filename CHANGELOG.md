@@ -7,6 +7,8 @@
   tok/s, Thinking-Profile und die komplette llama-swap-Config als Copy-Paste-Basis
 - Caveats ergänzt: Gemma-26B-QAT ohne draft-MTP fahren, 131k-Kontext braucht
   `-ub/-b 1024` (Compute-Buffer statt KV war der Engpass), Hash-Check-Pflicht
+- Danksagung im README: [Kai Explains (YouTube)](https://www.youtube.com/@kaiexplainsYT) —
+  Teile des Aufbaus basieren auf seinen Videos
 
 ## v1.0 — November 2026
 
