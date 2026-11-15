@@ -40,14 +40,49 @@ wmic OS get TotalVisibleMemorySize   # Windows
 ohne Bandbreiten-Check (`dmidecode -t memory | grep Speed` — unter 2400 MT/s:
 kleines Modell komplett auf GPU schlägt großes hybrid).
 
+### Pflicht-Gate: den Nutzer befragen, BEVOR ein Modell gewählt wird
+
+Ein Agent soll hier **nicht selbst entscheiden** — Modellwahl ist eine
+Präferenz-Entscheidung mit Trade-offs. Frage den Nutzer (alle Fragen in einem
+Durchgang, mit den gemessenen Konsequenzen):
+
+1. **Passungsverhalten:** „Modell komplett in die Grafikkarte (schnell, aber
+   Größen-Limit) oder großes Modell mit Auslagerung auf CPU/RAM (mehr Qualität,
+   langsamer — Faktor 2–3)?" → entscheidet Quant/Größe und ob `--n-cpu-moe`/
+   MoE-Cache/Strata-Themen relevant werden
+2. **Priorität:** „Speed (Agent-Arbeit, flüssiges Arbeiten) oder Qualität (seltenere,
+   schwerere Aufgaben)?" → klein-schnell vs. groß-langsam
+3. **Kontextbedarf:** „Wie lang sind typische Sessions/Prompts? (Chat < 8k,
+   Coding-Agent 32–65k, Riesen-Kontext > 100k)" → entscheidet `-c` und ob
+   Hybrid-Architekturen (DeltaNet/sliding window) Pflicht sind
+4. **Inhalt:** „Allround, Coding-Finetune oder uncensored?" → Finetune-Klasse
+5. **Sonderfälle:** Vision? FIM/Inline-Completion (dann BASE-Modell, nie Instruct)?
+   Mehrere Modelle (→ llama-swap, Phase 5)?
+
+Mappe die Antworten auf VRAM-Tabelle + Quant-Sweet-Spot (README Kap. 3/4) und nenne
+dem Nutzer 1–2 konkrete Kandidaten mit den Trade-offs — **dann** weiter zu Phase 1/2.
+Erst nach seiner Wahl herunterladen und konfigurieren.
+
 ---
 
 ## Phase 1 — Engine installieren (Gate: `llama-server --version` läuft)
 
-**Weg A — Docker (empfohlen für Server/Intel):**
+**Die Engine hängt an der GPU-Hersteller — die richtige Variante nehmen:**
+
+| GPU darunter | llama.cpp-Image (ggml-org) | llama-swap-Image (mostlygeek) | Anmerkung |
+|---|---|---|---|
+| NVIDIA | `ghcr.io/ggml-org/llama.cpp:server-cuda` | `ghcr.io/mostlygeek/llama-swap:cuda` | der gepflasterte Weg |
+| **Intel Arc/Battlemage** | `ghcr.io/ggml-org/llama.cpp:server-intel` | `ghcr.io/mostlygeek/llama-swap:intel` | SYCL/oneAPI **im Image** (≥ 2026.1!), kein Host-oneAPI nötig; GPU-Devices `/dev/dri` durchreichen |
+| AMD (ROCm) | `ghcr.io/ggml-org/llama.cpp:server-rocm` | `ghcr.io/mostlygeek/llama-swap:rocm` | HSA_OVERRIDE_GFX_VERSION je nach Karte |
+| AMD alt/sonstige, CPU-only | `:server-vulkan` / `:server` | `:vulkan` / `:cpu` | Vulkan meist die schnellste Notlösung |
+| Apple Silicon | nativ (`brew install llama.cpp`) bzw. MLX | — | MTP-Heads teils nur dort |
+
+**Niemand mischt:** ein CUDA-Image auf einem Arc-Host findet keine GPU („no known GPU
+vendor"), und CA-Templates tragen oft NVIDIA-Leftovers (`--gpus all`) — bei Intel/AMD
+strippen und stattdessen `/dev/dri`-Devices durchreichen.
+
 ```bash
-docker pull ghcr.io/ggml-org/llama.cpp:server-intel   # Intel/SYCL
-docker pull ghcr.io/ggml-org/llama.cpp:server-cuda    # NVIDIA
+docker pull ghcr.io/ggml-org/llama.cpp:<VARIANTE-AUS-TABELLE>
 ```
 
 **Weg B — Native:** Release-Tarball von

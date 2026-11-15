@@ -9,6 +9,9 @@
   `-ub/-b 1024` (Compute-Buffer statt KV war der Engpass), Hash-Check-Pflicht
 - Danksagung im README: [Kai Explains (YouTube)](https://www.youtube.com/@kaiexplainsYT) —
   Teile des Aufbaus basieren auf seinen Videos
+- ANLEITUNG.md erweitert: Pflicht-Gate „Nutzer zur Modellwahl befragen“ (Passungsverhalten,
+  Speed vs. Qualität, Kontextbedarf, Inhalt, Sonderfälle) und GPU-Hersteller-Tabelle für
+  die richtigen llama.cpp-/llama-swap-Image-Varianten (NVIDIA/Intel/AMD/Vulkan/Apple)
 
 ## v1.0 — November 2026
 
