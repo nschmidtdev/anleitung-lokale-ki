@@ -5,8 +5,9 @@
 > Stellschrauben kennt. Dieses Repo fasst zusammen, was nach zwei unabhängigen Messreihen
 > wirklich zählt — und welche „offensichtlichen“ Dinger nichts bringen.
 
-**Stand: November 2026** · [Benchmark-Rohdaten](docs/benchmarks.md) ·
-[Troubleshooting](docs/troubleshooting.md) · [Beiträge willkommen](CONTRIBUTING.md)
+**Stand: November 2026** · **[ANLEITUNG.md](ANLEITUNG.md) — das agent-ausführbare Playbook** ·
+[Benchmark-Rohdaten](docs/benchmarks.md) · [Troubleshooting](docs/troubleshooting.md) ·
+[Beiträge willkommen](CONTRIBUTING.md)
 
 ---
 
