@@ -12,6 +12,9 @@
 - ANLEITUNG.md erweitert: Pflicht-Gate „Nutzer zur Modellwahl befragen“ (Passungsverhalten,
   Speed vs. Qualität, Kontextbedarf, Inhalt, Sonderfälle) und GPU-Hersteller-Tabelle für
   die richtigen llama.cpp-/llama-swap-Image-Varianten (NVIDIA/Intel/AMD/Vulkan/Apple)
+- README Kap. 6: Absatz „Kontextdruck ist die stille Agent-Falle“ — Thinking-Einstellungen
+  + Harness füllen den Kontext schnell; Folgen (häufige Compaction, Ausfall ohne
+  Toolcalls) und Gegenmaßnahmen nach Effektivität sortiert
 
 ## v1.0 — November 2026
 

@@ -142,7 +142,24 @@ Tool (Aider, Cline, Continue …). Beispiel opencode.jsonc (Ausschnitt):
   keine Output-Tokens mehr frei sind („summary reached the output token limit“).
   Entweder früher manuell kompaktieren oder Server-Kontext größer als den Client-Limit
   fahren — der Client-Glaubenssatz steuert nur den Zeitpunkt, der Server-Luft die
-  Qualität der Zusammenfassung.
+  Qualität der Zusammenfassungen.
+
+**Kontextdruck ist die stille Agent-Falle.** Je nach Harness und Thinking-Einstellung
+kann der Kontext erstaunlich schnell ans Limit laufen — und dann kippt der Agent in eine
+Kette, die du so selten sehen willst: Reasoning-Modelle verbringen einzelne Aufgaben
+mit 10–20k Tokens reinem Thinking (gemessen: 16k Output-Tokens ohne einen einzigen
+Implementierungs-Toolcall; ein ganzer Task verbrauchte das komplette Output-Budget mit
+Denken und endete ohne einen einzigen Patch). Bei vollem Deckel bleiben dann zwei
+Ausgänge, beide schlecht: **häufige Compactions** (jede kostet Zeit *und* Kontext — die
+Zusammenfassung vergisst Details, die ein langer Agent-Thread braucht) oder der Agent
+**bricht ohne Toolcalls komplett ein**, weil für den Aufruf selbst kein Output-Raum
+mehr da ist. Gegenmaßnahmen, nach Effektivität sortiert: Reasoning-Effort pro Aufgabe
+wählen (medium statt high für Routine-Arbeit), `preserve_thinking` abschalten (spart
+Kontext in der Historie), `limit.output` hoch genug für Thinking + Toolcalls, früh
+kompaktieren statt am Deckel, und Server-Kontext größer als den Client-Limit fahren
+(s. o.). Mess-Erfahrung: ein Task, der mit Thinking an durch sein Budget starb, lief
+mit Thinking aus in 5:40 min und bestand 9/10 Checks — das ist kein Argument gegen
+Reasoning, aber dafür, das Budget bewusst zu setzen.
 
 ### 6b. Mehrere Modelle ohne Neustart-Zirkus: llama-swap
 
