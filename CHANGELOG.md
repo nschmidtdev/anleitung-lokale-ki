@@ -15,6 +15,9 @@
 - README Kap. 6: Absatz „Kontextdruck ist die stille Agent-Falle“ — Thinking-Einstellungen
   + Harness füllen den Kontext schnell; Folgen (häufige Compaction, Ausfall ohne
   Toolcalls) und Gegenmaßnahmen nach Effektivität sortiert
+- `docs/cloud-gpu.md`: GPU-Miete als dritte Option — vast.ai-Preise (Nov 2026,
+  3 Tracker), Break-even-Tabelle gegen lokale Hardware, wann Mieten gewinnt und
+  warum Datenschutz der lokale Trumpf bleibt; README Kap. 1 verlinkt kurz
 
 ## v1.0 — November 2026
 

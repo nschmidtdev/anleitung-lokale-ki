@@ -39,6 +39,12 @@ Lang-Session = **0,00 €** (System A).
 4–35B-Klasse liegen unterhalb der großen Cloud-Modelle; für Recherche/Design gut, für
 hartes Toolchain-Debugging mittel. **Mische: lokal für Masse, Cloud für die harten 5 %.**
 
+**Dritte Option — GPU mieten statt kaufen:** auf Marktplätzen wie
+[vast.ai](https://vast.ai/pricing) gibt es 24-GB-Karten ab ~$0,15–0,25/h (Nov 2026).
+Für gelegentliche Experimente (~20 h/Monat ≈ $13) klar günstiger als Anschaffung;
+über ~100 h/Monat lohnt Kauf. Aber: Datenschutz — das lokale Hauptargument — gilt dort
+nicht, dein Code verlässt das Haus. Detailrechnung: [docs/cloud-gpu.md](docs/cloud-gpu.md).
+
 ## 2. Voraussetzungen
 
 | Komponente | Minimum | Komfort | Warum |
